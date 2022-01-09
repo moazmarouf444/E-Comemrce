@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,15 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+    ], function () { //...
 
-Route::group(['as' => 'admin.','middleware' => 'auth:admin'],function(){
-    Route::get('/',[DashboardController::class,'index'])->name('dashboard');
-    Route::get('logout',[AuthController::class,'logout'])->name('logout');
+    Route::group(['as' => 'admin.', 'middleware' => 'auth:admin', 'prefix' => 'admin'], function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+        Route::group(['prefix' => 'settings'], function () {
+            Route::get('shipping-methods/{type}', [SettingController::class, 'editShippingMethods'])->name('edit.shipping.methods');
+            Route::put('shipping-methods-update/{type}', [SettingController::class, 'updateShippingMethods'])->name('update.shipping.methods');
+        });
+        Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    });
+
+
+    Route::group([ 'middleware' => 'guest:admin', 'prefix' => 'admin'], function () {
+        Route::get('login', [AuthController::class, 'login'])->name('admin.login');
+        Route::post('post-login', [AuthController::class, 'postLogin'])->name('admin.post.login');
+    });
 });
-
-
-Route::group(['as' => 'admin.','middleware' => 'guest:admin'],function(){
-    Route::get('login',[AuthController::class,'login'])->name('login');
-    Route::post('post-login',[AuthController::class,'postLogin'])->name('post.login');
-});
-
