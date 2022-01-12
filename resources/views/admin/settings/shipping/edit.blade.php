@@ -39,12 +39,12 @@
                                         </ul>
                                     </div>
                                 </div>
-                                @include('dashboard.includes.alerts.success')
-                                @include('dashboard.includes.alerts.errors')
+                                @include('admin.includes.alerts.success')
+                                @include('admin.includes.alerts.errors')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{route('update.shipping.methods',$shippingMethod -> id)}}"
-                                              method="PUT"
+                                        <form class="form" action="{{route('admin.update.shipping.methods',$shippingMethod -> id)}}"
+                                              method="post"
                                               enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
@@ -71,19 +71,15 @@
                                                             <label for="projectinput1"> قيمه التوصيل </label>
                                                             <input type="number" value="{{$shippingMethod -> plain_value}}" id="plain_value"
                                                                    class="form-control"
-                                                                   placeholder="  "
+                                                                   placeholder=""
                                                                    name="plain_value">
                                                             @error("plain_value")
                                                             <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
-
                                                 </div>
-
-
                                             </div>
-
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
                                                         onclick="history.back();">

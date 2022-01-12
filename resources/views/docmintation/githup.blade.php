@@ -14,4 +14,7 @@
 * git add .
 * git add README.md.
 * git commit -m "first commit".
+* git checkout -b branch name  .
+* git branch عشان اعرف البرنشات اللى عندك .
 
+لو عايز تعمل ميرج ريكويست من البيجن للمستر مثلا هتعملها انك بتقف ف الاول ع اكونت بيجين وتعمل بل ريكويست

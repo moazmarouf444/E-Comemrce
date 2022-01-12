@@ -102,20 +102,21 @@
             <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
                       data-i18n="nav.templates.main">{{__('admin/sidebar.Settings')}} </span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">وسائل التوصيل</a>
+                    <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">{{__('admin/sidebar.Delivery means')}}</a>
                         <ul class="menu-content">
                             <li><a class="menu-item" href="{{route('admin.edit.shipping.methods','free')}}"
-                                   data-i18n="nav.templates.vert.classic_menu">توصيل مجاني</a>
+                                   data-i18n="nav.templates.vert.classic_menu">{{__('admin/sidebar.Free shipping')}}</a>
                             </li>
-                            <li><a class="menu-item" href="{{route('admin.edit.shipping.methods','inner')}}">توصيل داخلي</a>
+                            <li><a class="menu-item" href="{{route('admin.edit.shipping.methods','inner')}}">{{__('admin/sidebar.Internal shipping')}}</a>
                             </li>
                             <li><a class="menu-item" href="{{route('admin.edit.shipping.methods','outer')}}"
-                                   data-i18n="nav.templates.vert.compact_menu">توصيل خارجي</a>
+                                   data-i18n="nav.templates.vert.compact_menu">{{__('admin/sidebar.External shipping')}}</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </li>
+
             <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"
                                                                         data-toggle="tooltip"
