@@ -26,6 +26,10 @@ class SettingSeeder extends Seeder
             'local_shipping_cost' => 0,
             'outer_shipping_cost' => 0,
             'free_shipping_cost' => 0,
+            'free_shipping_label' =>0,
+            'local_label' => 0,
+            'outer_label' => 0,
+
             'translatable' => [ // static key in packdge fot translation
                 'store_name' => 'متجر معاذ',
                 'free_shipping_label' => 'توصيل مجاني',
