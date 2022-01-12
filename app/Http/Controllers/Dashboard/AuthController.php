@@ -21,9 +21,14 @@ class AuthController extends Controller
         return redirect()->back()->with(['error' => 'هناك خطا في البيانات']);
     }
 
-    public function logout(Request $request) {
-        Auth::logout();
-        return redirect()->route('admin.login');
+    public function logout() {
+        $guard = $this->getGaurd();
+        $guard->logout();
+            return redirect()->route('admin.login');
+    }
+
+    public function getGaurd(){
+        return auth('admin');
     }
 
 }
