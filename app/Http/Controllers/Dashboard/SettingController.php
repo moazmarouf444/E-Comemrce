@@ -7,20 +7,19 @@ use App\Http\Requests\Admin\ShippingRequest;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class SettingController extends Controller
 {
     public function editShippingMethods($type){
             if($type == 'free')
                 $shippingMethod = Setting::where('key','free_shipping_label')->first();
-
             elseif($type == 'inner')
                 $shippingMethod = Setting::where('key','local_label')->first();
             elseif($type == 'outer')
                 $shippingMethod = Setting::where('key','outer_label')->first();
             else
                 $shippingMethod = Setting::where('key','free_shipping_label')->first();
-
         return view('admin.settings.shipping.edit',compact('shippingMethod'));
     }
 

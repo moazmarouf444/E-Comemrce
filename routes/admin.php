@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\AuthController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\SettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,11 @@ Route::group(
         Route::group(['prefix' => 'settings'], function () {
             Route::get('shipping-methods/{type}', [SettingController::class, 'editShippingMethods'])->name('edit.shipping.methods');
             Route::put('/shipping-methods-update/{type}', [SettingController::class, 'updateShippingMethods'])->name('update.shipping.methods');
+        });
+
+        Route::group(['prefix' => 'profile'], function () {
+            Route::get('edit', [ProfileController::class, 'editProfile'])->name('edit.profile');
+            Route::put('update', [ProfileController::class, 'updateProfile'])->name('update.profile');
         });
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     });
